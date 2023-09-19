@@ -1,0 +1,270 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Inria Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+#header {
+    font-style: regular;
+    font-size: 40px;
+    color: rgb(40, 40, 40);
+    text-align: center;
+    justify-self: center;
+    border: 3px solid;
+    padding: 10px;
+    width: 250px;
+    cursor: pointer;
+}
+
+#main-container {
+    background-color: rgba(152, 152, 152, 0.09);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+#navbar {
+    margin: 0px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-bottom: 3px;
+    border-bottom: 2px solid rgb(137, 137, 137);
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.navbar-sub-item {
+    min-width: 420px;
+    align-self: center;
+}
+
+#header-item {
+    display:flex;
+    justify-content: center;
+}
+
+#links {
+    display:flex;
+}
+
+#navbar-sub {
+    width:fit-content;
+    display:flex;
+    column-gap: 40px;
+}
+
+.navbar-items {
+    font-size: 20px;
+    font-style: italic;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbar-items:hover {
+    cursor: pointer;
+}
+
+#search-bar {
+    margin-right: 0px;
+    width: 200px;
+    height: 20px;
+    font-style: normal;
+    background-color:rgb(255, 255, 255);
+    border: 2px solid;
+    padding: 8px;
+}
+
+#search-bar:hover {
+    cursor:text;
+}
+
+#artwork {
+    position: relative;
+    align-self: center;
+    display: flex;
+    column-gap: 100px;
+}
+
+#artwork-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-bottom: 2px solid;
+    height: 435px;
+}
+
+.artwork-item {
+    display: flex;
+}
+
+.header-img {
+    width: 410px;
+    height: 402px;
+    opacity: 0.45;
+}
+
+.centered {
+    margin: 0px;
+    justify-self: center;
+    width: 410px;
+    top: 30%;
+    text-align: center;
+    position: absolute;
+}
+
+.artwork-p {
+    margin: 0px;
+    justify-self: center;
+    width: 410px;
+    top: 50%;
+    text-align: center;
+    position: absolute;
+    font-weight:bold;
+}
+
+#filter-container {
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 20px;
+    width: fit-content;
+    display: flex;
+    column-gap: 10px;
+    outline: 2px;
+    outline-color: rgb(40, 40, 40);
+    outline-style: solid;
+}
+
+#shop-container{
+    margin-top: 80px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    column-gap: 10px;
+}
+
+.shop-thumbnail {
+    width: 300px;
+    outline: 2px;
+    outline-color: rgb(40, 40, 40);
+    outline-style: solid;
+}
+
+.shop-add-button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 20px;
+    bottom: 0px;
+    border: 0px;
+    background-color: white;
+}
+
+.shop-add-button > i:hover {
+    background-color: rgb(216, 237, 224);
+}
+
+.shop-item {
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(255, 255, 255);
+    border: 2px solid;
+    height: fit-content;
+}
+
+.shop-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    row-gap: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.price {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.discount {
+    color: red;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0px;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-top: 30px;
+    background-color: rgb(222, 222, 222);
+    border-top: 2px solid;
+    height: 80px;
+    column-gap: 200px;
+    padding: 10px;
+}
+
+footer > div > i {
+    font-size: 30px;
+}
+
+#footer-sub-2 {
+    text-align: center;
+    align-self: center;
+}
+
+#shopping-cart {
+    position:absolute;
+    right: 40px;
+    top: 30px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    padding: 5px;
+}
+
+#modal-show-art {
+    display:flex;
+    background-color:aquamarine;
+    align-self: center;
+}
+
+#modal-img {
+    width: 80%;
+}
+
+#modal-icon {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 50%;
+    top: 20px;
+    border: 0px;
+    background-color: white;
+    text-align: center;
+    
+}
+
+.pop-animation:hover{
+    scale: 1.05;
+    transition: 1s all;
+}
+
+.pop-animation {
+    scale: 1.0;
+    transition: 1s all;
+}
+
+
+
