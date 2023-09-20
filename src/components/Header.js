@@ -6,7 +6,7 @@ function NavbarItem({ Body }) {
     );
 };
 
-
+//Export Header-component below
 function Header() {
     return (
         <container id="navbar">

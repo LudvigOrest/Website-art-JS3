@@ -83,26 +83,29 @@ body {
     cursor:text;
 }
 
-#artwork {
+#banner {
     position: relative;
     align-self: center;
     display: flex;
     column-gap: 100px;
 }
 
-#artwork-container {
+#banner-container {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     border-bottom: 2px solid;
-    height: 435px;
+    height: 425px;
+    align-content: center;
+    column-gap: 100px;
 }
 
-.artwork-item {
+.banner-item {
     display: flex;
 }
 
-.header-img {
+.banner-img {
     width: 410px;
     height: 402px;
     opacity: 0.45;
@@ -117,7 +120,7 @@ body {
     position: absolute;
 }
 
-.artwork-p {
+.banner-p {
     margin: 0px;
     justify-self: center;
     width: 410px;
@@ -218,6 +221,7 @@ footer {
 
 footer > div > i {
     font-size: 30px;
+    margin-right: 5px;
 }
 
 #footer-sub-2 {
