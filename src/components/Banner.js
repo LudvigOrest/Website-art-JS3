@@ -1,10 +1,17 @@
-import React, { Children } from 'react';
+import React, { Children, useEffect, useState } from 'react';
+import { getArtwork, imageList } from '../api/index.js';
 
-function BannerItem({ imgSource, bannerHeader, bannerPar }) {
+function BannerItem({ bannerHeader, bannerPar, index }) {
+
+    const [img, setImg] = useState([]);
+    useEffect(() =>{
+        getArtwork(setImg, index);
+    }, []);
+
     return(
         <div id="banner">
             <div class="banner-item pop-animation">
-                <img class="banner-img" src={ imgSource }></img>
+                <img class="banner-img" src={ img }></img>
                 <h1 class="centered">{ bannerHeader }</h1>
                 <p class="banner-p">{ bannerPar }</p>
             </div>
@@ -16,11 +23,13 @@ function BannerItem({ imgSource, bannerHeader, bannerPar }) {
 function Banner() {
     return(
         <div id="banner-container">
-            <BannerItem imgSource="./api/placeholder-3.jpg" 
+            <BannerItem 
             bannerHeader="FET RUBRIK" bannerPar="Lorem ipsum dolor amer set, ipsum falor mer sombre los." 
+            index="1"
             />
-            <BannerItem imgSource="placeholderText.jpg" 
+            <BannerItem
             bannerHeader="FET RUBRIK" bannerPar="Lorem ipsum dolor amer set, ipsum falor mer sombre los." 
+            index="2"
             />
         </div>
     );

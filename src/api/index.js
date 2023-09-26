@@ -1,64 +1,24 @@
 export let artArr;
 
-const URL = "https://api.pexels.com/v1/search?query=art";
+export let imageList = [];
+export let imageList2 = [];
 
-export const testar = fetch(URL, {headers: { Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ" } }
-    )
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        let res = data;
-        artArr = res.photos;
-        //console.log(artArr);
-        //console.log(artArr[1].src.original);
-        return artArr[1].src.original;
-    })
-    .catch(function(error) {
-        console.log(error);
-    })
+//Pexel-api
+const url = "https://api.pexels.com/v1/search?query=modernart?page=2&per_page=40";
+const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
 
-//Async fetch function to get artwork for the shop thumbnails
-export async function getArtwork(index) {
-    const testar = fetch(URL, {headers: { Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ" } }
-    )
-    .then((response) => {
-        return response.json();
+//Function used to fetch artwork image-sources
+export async function getArtwork(func, index) {
+    fetch(url, auth)
+     .then(resp => {
+      return resp.json()
     })
-    .then((data) => {
-        let res = data;
-        artArr = res.photos;
-        console.log(artArr);
-        console.log(artArr[1].src.original);
-        return artArr[1].src.original;
-    })
-    .catch(function(error) {
-        console.log(error);
-    })  
-}
-
-/**
- * let arr = [];
-    let arr2 = [];
-
-    let result = await fetch("https://api.pexels.com/v1/search?query=art" ,{
-        headers: {
-            Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"
-        }
-    }).then(result => result.json())
-    .then(result => {
-        arr.push(result.photos);
-        arr2 = arr.map(getPhotosFromArr);
-        console.log(arr[0].src);
-        console.log(arr2)
-    }).then(arr => console.log(arr))
-}
-
-function getPhotosFromArr(array) {
-    return array;
- * 
- * 
- * ;
-    let artwork = await result.json();
-    return artwork;
- */
+     .then((images) => {
+      for (let i = 0; i < images.photos.length; i++) {
+          imageList.push(images.photos[i]);  
+     }
+      //func(imageList[index].src.original);
+     })
+     .then(() => {func(imageList[index].src.original)})
+     .catch(() => {console.log("run it back"); getArtwork(func, index)});
+    }

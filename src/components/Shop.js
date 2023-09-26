@@ -1,31 +1,12 @@
 import React, { Children, useEffect, useState } from 'react';
-import { getArtwork } from '../api/index.js';
+import { getArtwork, imageList } from '../api/index.js';
 
-let imageList = [];
-const URL = "https://api.pexels.com/v1/search?query=artwork&page=1&per_page=10";
-
-function getPhotos(func, index) {
-    fetch(URL ,{ headers: {
-        Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ",
-    }})
-     .then(resp => {
-      return resp.json()
-    })
-     .then((images) => {
-      for (let i = 0; i < images.photos.length; i++) {
-          imageList.push(images.photos[i]);  
-     }
-      console.log(imageList);
-      console.log(imageList[index].src.original);
-      func(imageList[index].src.original);
-     });
-    }
-
+//Shop item-card
 function ShopItem({ imgHeader, size, price, index }) {
 
     const [img, setImg] = useState([]);
-    useEffect(() =>{
-        getPhotos(setImg, index);
+    useEffect(() => {
+        getArtwork(setImg, index);
     }, [])
 
     return(
