@@ -5,13 +5,15 @@ import Banner from './components/Banner';
 import Shop from './components/Shop';
 import Footer from './components/Footer';
 
+export let imageList = [];
+
 function App() {
   return (
     <container id="main-container">
-      <Header />
-      <Banner />
-      <Shop />
-      <Footer />
+        <Header />
+        <Banner />
+        <Shop />
+        <Footer />
     </container>
   );
 }
