@@ -20,10 +20,10 @@ function Header() {
                 <div class="navbar-sub-item" id="header-item">
                     <h1 id="header">OREST ART</h1>  
                 </div>
-                    <div class="navbar-sub-item">
+                <div class="navbar-sub-item">
                     <div class="navbar-items" id="search-bar">Sök</div>
+                    <i id="shopping-cart" class="fi fi-rr-shopping-cart pop-animation"></i>
                 </div>
-                
             </div>
         </container>
     );

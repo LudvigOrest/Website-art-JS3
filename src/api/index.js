@@ -4,11 +4,38 @@ export let imageList = [];
 export let imageList2 = [];
 
 //Pexel-api
-const url = "https://api.pexels.com/v1/search?query=modernart?page=2&per_page=40";
+const url = "https://api.pexels.com/v1/search?query=modernart";
 const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
 
+export const fetchImgs = async(url, auth) => {
+  let fetchData = await fetch(url, auth);
+  let fetchJson = await fetchData.json();
+  return fetchJson;
+};
+
+export function getImgs(url, auth) {
+  return fetchImgs(url, auth).then((jsonData) => {
+      console.log(jsonData.photos);
+      return jsonData.photos;
+  })
+};
+
+
+
+
+/**
+ * export async function fetchData(arr) {
+  const result = await fetch(url, auth)
+  result.json().then(json => {
+    json.photos.forEach((element) => {arr.push(element)});
+  }).then(() => {console.log(arr)})
+}
+ */
+
+
 //Function used to fetch artwork image-sources
-export async function getArtwork(func, index) {
+    /**
+     * export async function getArtwork(func, index) {
     fetch(url, auth)
      .then(resp => {
       return resp.json()
@@ -22,3 +49,4 @@ export async function getArtwork(func, index) {
      .then(() => {func(imageList[index].src.original)})
      .catch(() => {console.log("run it back"); getArtwork(func, index)});
     }
+     */
