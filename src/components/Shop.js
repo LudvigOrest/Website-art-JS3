@@ -2,7 +2,7 @@ import React, { Children, useEffect, useState } from 'react';
 import { getArtwork, imageList, fetchData, getImgs } from '../api/index.js';
 
 //Shop item-card
-function ShopItem({ size, price, index }) {
+function ShopItem({ price, index }) {
 
     //Later on change this to global state for all images, maybe include .alt to fetch both img and name of painting
     const [imgArr, setImgArr] = useState([]);

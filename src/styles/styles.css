@@ -8,6 +8,10 @@ body {
     cursor: pointer;
 }
 
+.flex {
+    display: flex;
+}
+
 #header {
     font-style: regular;
     font-size: 40px;
@@ -28,6 +32,8 @@ body {
 }
 
 #navbar {
+    position: fixed;
+    z-index: 8;
     margin: 0px;
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -92,6 +98,7 @@ body {
 }
 
 #banner-container {
+    margin-top: 150px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -236,15 +243,61 @@ footer > div > i {
     align-self: center;
 }
 
-#shopping-cart {
-    position:absolute;
-    right: 40px;
-    top: 30px;
-    background-color: rgb(255, 255, 255);
+#cart-container {
+    position: fixed;
+    right: 120px;
+    top: 20px;
     z-index: 10;
+    display:flex;
+    flex-wrap: wrap;
+    color: red;
+    background-color: white;
+    display: hidden;
+}
+
+#cart-modal {
+    visibility: visible;
+    position: fixed;
+    z-index: 12;
+    background-color: white;
+    padding: 5px;
+    border: solid 1px black;
+    display: flex;
+    flex-direction: row;
+    top: 0px;
+    right: 0px;
+    width: 30%;
+    height: 100%;
+}
+
+#cart-modal-container {
+    flex-direction: column;
+    width: 100%;
+}
+
+#cart-modal-header {
+}
+
+#cart-modal-header-btns {
+    column-gap: 20px;
+    justify-self: end;
+    justify-content: end;
+    width: 100%;
+}
+
+#cart-modal-item-card {
+    height: 100px;
+}
+
+#cart-modal-item-card > img {
+    width: 100px;
+    height: 100px;
+}
+
+#shopping-cart {
     padding: 5px;
     font-size: 40px;
-    background-color: white;
+    display:visible;
 }
 
 #modal-show-art {
