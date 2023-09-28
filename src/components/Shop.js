@@ -1,8 +1,14 @@
 import React, { Children, useEffect, useState } from 'react';
 import { getArtwork, imageList, fetchData, getImgs } from '../api/index.js';
+import { useRecoilState } from 'recoil';
+import { cartItemState, cartItemListState } from '../states/globalStates.js';
+import { ShopItemsObject } from '../objects/objects.js';
+
 
 //Shop item-card
 function ShopItem({ price, index }) {
+
+    const [cartItems, setCartItems] = useRecoilState(cartItemListState);
 
     //Later on change this to global state for all images, maybe include .alt to fetch both img and name of painting
     const [imgArr, setImgArr] = useState([]);
@@ -10,6 +16,13 @@ function ShopItem({ price, index }) {
     const [artSize, setArtSize] = useState([]);
     const url = "https://api.pexels.com/v1/search?query=modern art";
     const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
+
+    const clicked = () => {
+        //params: (id, img, name, amount, size, price, isAddable) This global state is used in Cart.js
+        let currentItem = new ShopItemsObject(index, imgArr, artTitle, 1, artSize, price, true);
+        console.log(currentItem);
+        setCartItems(cartItems => [...cartItems, currentItem]);
+    }
 
     useEffect( () =>{
         let newArr = [];
@@ -31,7 +44,7 @@ function ShopItem({ price, index }) {
     return(
         <div class="shop-item pop-animation">
             <img class="shop-thumbnail" src={ imgArr }></img>
-            <button class="shop-add-button">
+            <button class="shop-add-button" onClick={ clicked }>
                 <i class="fi fi-rr-shopping-cart-add pointer pop-animation"
                 style={{fontSize: "25px"}}></i>
             </button>
