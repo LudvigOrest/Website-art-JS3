@@ -9,19 +9,23 @@ import { ShopItemsObject } from '../objects/objects.js';
 function ShopItem({ price, index }) {
 
     const [cartItems, setCartItems] = useRecoilState(cartItemListState);
-
+    
     //Later on change this to global state for all images, maybe include .alt to fetch both img and name of painting
     const [imgArr, setImgArr] = useState([]);
     const [artTitle, setArtTitle] = useState([]);
     const [artSize, setArtSize] = useState([]);
     const url = "https://api.pexels.com/v1/search?query=modern art";
     const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
+    const [added, setAdded] = useState(false);
+
 
     const clicked = () => {
+        
         //params: (id, img, name, amount, size, price, isAddable) This global state is used in Cart.js
         let currentItem = new ShopItemsObject(index, imgArr, artTitle, 1, artSize, price, true);
         console.log(currentItem);
         setCartItems(cartItems => [...cartItems, currentItem]);
+        setAdded(true);
     }
 
     useEffect( () =>{

@@ -1,15 +1,11 @@
 import React, { Children, useEffect, useState } from 'react';
 import { getArtwork, imageList, fetchData, getImgs } from '../api/index.js';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { cartItemState, cartItemListState } from '../states/globalStates.js';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { cartItemListState } from '../states/globalStates.js';
 
 export function CartProductCard( {index} ) {
 
-    const cartItemObject = useRecoilValue(cartItemState);
-    const [itemArr, setItemArr] = useRecoilState(cartItemListState);
-
-    console.log(itemArr);
-    
+    const itemArr = useRecoilValue(cartItemListState);
 
     if (itemArr.length === 0) {
         return(
@@ -56,20 +52,7 @@ export function CartProductCard( {index} ) {
     }
 }
 
-
-
-export function Cart({ name }) {
-
-    function AllCartProductCards() { 
-        console.log(itemsArr.length);
-
-        for (let i = 0; i < itemsArr.length; i++) {
-            itemsArr.map((items) => {
-                console.log(itemsArr.indexOf(items));
-                return <><CartProductCard index={itemsArr.indexOf(items)}/></>
-            })
-        }
-    }
+export function Cart() {
 
     const [itemsArr, setItemsArr] = useRecoilState(cartItemListState);
     
@@ -86,15 +69,10 @@ export function Cart({ name }) {
             </div>
             <container id="cart-modal-item-container flex">
                 <div class="cart-modal-item-card">
-                    <AllCartProductCards />
-                    {() => {
-                            itemsArr.map((items) => {
-                                console.log(itemsArr.indexOf(items));
-                                return <><CartProductCard index={itemsArr.indexOf(items)}/></>
-                            })
-                        }
-                    }
-                    <CartProductCard index={itemsArr.length-1}/>
+                    {
+                        itemsArr.map((item, i) => (
+                            <CartProductCard index={i}/>
+                    ))}
                 </div>
             </container>
             <container id="cart-modal-footer flex">
