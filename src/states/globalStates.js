@@ -1,24 +1,10 @@
-import { CartItemsObject, ShopItemsObject } from '../objects/objects.js';
+import { ShopItemsObject } from '../objects/objects.js';
 const { atom } = require("recoil");
+
+//Debug-object
+let tester = new ShopItemsObject(343, "https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg", "Debug", 1, "40x30", "300", true)
 
 export const cartItemListState = atom({
     key: "cartItemListState",
-    default: []
+    default: [tester]
 });
-
-
-export async function lookForDupes(array) {
-
-    console.log("looking through array");
-    let isDupe = false;
-    array.map((el, i) => {
-        return array.find((element, index) => {
-            if (i !== index && element.id === el.id) {
-                console.log(index);
-                isDupe = true;
-            }
-        })
-    })
-    console.log("dupe? " + isDupe);
-    return isDupe;
-};

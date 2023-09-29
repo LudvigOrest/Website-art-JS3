@@ -34,40 +34,44 @@ export function CartProductCard( {index} ) {
         );
     }
     else {
-        console.log(itemArr);
         const AddButtons = () => {
             if( itemArr[index].isAddable === true ) {
                 return(
-                    <div id="buttons" class="flex">
-                        <button onClick={add}>Add</button>
-                        <button onClick={sub}>Sub</button>
+                    <div class="buttons-container flex">
+                        <button class="pointer greenify adder" onClick={add}>+</button>
+                        <button class="pointer redify subber" onClick={sub}>-</button>
                     </div>
                 );
             } else {return <>Sorry</>}
         }
+
+        
         return(
             <div id="cart-modal-item-card" class="flex">
                 <AddButtons />
-                <img src={ itemArr[index].img }></img>
-                <div id="details">
+                <div class="img-box">
+                    <img src={ itemArr[index].img }></img>
+                </div>
+                <div class="details flex">
                     <h3>{ itemArr[index].name }</h3>
-                    <div id="info">
+                    <div class="info flex">
                         <table>
                             <tr>
-                                <th>antal: </th>
-                                <th>storlek: </th>
-                                <th>pris: </th>
+                                <th>Antal</th>
+                                <th>Storlek</th>
+                                <th>Pris</th>
                             </tr>
                             <tr>
                                 <td>{ itemArr[index].amount }</td>
                                 <td>{ itemArr[index].size }</td>
-                                <td>{ itemArr[index].price }</td>
+                                <td>{ itemArr[index].price * itemArr[index].amount }</td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <h3>6 000 kr</h3>
-                <button>Ta bort</button>
+                <button class="remove redify">
+                <i class="fi fi-rr-trash"></i>
+                </button>
             </div>
         );
     }
@@ -84,8 +88,8 @@ export function Cart() {
             <div id="cart-modal-header" class="flex">
                 <h1>Varukorg</h1>
                 <div id="cart-modal-header-btns" class="flex">
-                    <h3>Minimera</h3>
-                    <h3>Rensa</h3>
+                    <button>Stäng</button>
+                    <button class="redify">Rensa</button>
                 </div>
             </div>
             <container id="cart-modal-item-container flex">

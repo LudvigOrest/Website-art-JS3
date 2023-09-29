@@ -68,7 +68,7 @@ function ShopItem({ price, index }) {
             <div class="shop-info">
                 <h2>{ artTitle }</h2>
                 <h2>{ artSize } </h2>
-                <h2 class="price">{ price }</h2>
+                <h2 class="price">{ price } kr</h2>
             </div>
         </div>
     );
@@ -79,14 +79,14 @@ function Shop() {
 
     return(
         <container id="shop-container">
-            <ShopItem size="60x60 cm" price="6 000 kr" index="7"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="8"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="9"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="3"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="4"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="5"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="6"/>
-            <ShopItem size="60x60 cm" price="6 000 kr" index="12"/>
+            <ShopItem size="60x60 cm" price="6000" index="7"/>
+            <ShopItem size="60x60 cm" price="6000" index="8"/>
+            <ShopItem size="60x60 cm" price="6000" index="9"/>
+            <ShopItem size="60x60 cm" price="6000" index="3"/>
+            <ShopItem size="60x60 cm" price="6000" index="4"/>
+            <ShopItem size="60x60 cm" price="6000" index="5"/>
+            <ShopItem size="60x60 cm" price="6000" index="6"/>
+            <ShopItem size="60x60 cm" price="6000" index="12"/>
         </container>
         );
     };
