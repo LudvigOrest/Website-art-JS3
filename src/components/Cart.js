@@ -5,8 +5,29 @@ import { cartItemListState } from '../states/globalStates.js';
 
 export function CartProductCard( {index} ) {
 
-    const itemArr = useRecoilValue(cartItemListState);
+    const [itemArr, setItemArr] = useRecoilState(cartItemListState);
 
+    //Onclick functions for add/remove quantity in the Cart
+    const add = () => {
+        let newArr = itemArr.map((item, i) => {
+            if (i === index) {
+                return {...item, amount: (item.amount + 1)};
+            }
+            else { return {...item} };
+        })
+        setItemArr(newArr);
+    };
+    const sub = () => {
+        let newArr = itemArr.map((item, i) => {
+            if (i === index && item.amount > 0) {
+                return {...item, amount: (item.amount - 1)};
+            }
+            else { return {...item} };
+        })
+        setItemArr(newArr);
+    };
+
+    //Fix this >
     if (itemArr.length === 0) {
         return(
             <div>Varukorgen är tom</div>
@@ -18,8 +39,8 @@ export function CartProductCard( {index} ) {
             if( itemArr[index].isAddable === true ) {
                 return(
                     <div id="buttons" class="flex">
-                        <button>Add</button>
-                        <button>Sub</button>
+                        <button onClick={add}>Add</button>
+                        <button onClick={sub}>Sub</button>
                     </div>
                 );
             } else {return <>Sorry</>}

@@ -16,7 +16,6 @@ function ShopItem({ price, index }) {
     const [artSize, setArtSize] = useState([]);
     const url = "https://api.pexels.com/v1/search?query=modern art";
     const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
-    const [added, setAdded] = useState(false);
 
 
     const clicked = () => {
@@ -24,8 +23,22 @@ function ShopItem({ price, index }) {
         //params: (id, img, name, amount, size, price, isAddable) This global state is used in Cart.js
         let currentItem = new ShopItemsObject(index, imgArr, artTitle, 1, artSize, price, true);
         console.log(currentItem);
-        setCartItems(cartItems => [...cartItems, currentItem]);
-        setAdded(true);
+        
+        let isDupe = false;
+        //Check if there are duplicates in the cart items-array
+        let newArr = cartItems.map(item => {
+            if (item.id == currentItem.id) {
+                isDupe = true;
+                return {...item, amount: (item.amount + 1)};
+            }
+            return item;
+        })
+        //If there is a dupe then just replace the old cart items-array with new array that has updated amount
+        if (isDupe === true) {
+            console.log(newArr);
+            setCartItems(newArr);
+            isDupe = false
+        } else { setCartItems(cartItems => [...cartItems, currentItem]); }
     }
 
     useEffect( () =>{
