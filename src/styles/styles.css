@@ -255,15 +255,40 @@ footer > div > i {
     display: hidden;
 }
 
-#cart-modal-header-btns {
-    align-self: start;
-    justify-self: center;
-    width:fit-content;
-    height: 20px;
+@keyframes test {
+    0% {right: -500px;}
+    100% {right: 0px;}
+}
+
+@keyframes closing {
+    0% {right: 0px;}
+    100% {right: -500px;}
+}
+
+@keyframes dissappear {
+    0% {visibility: visible;
+        opacity: 100%;
+        right: 0px;}
+    99% {visibility: visible;}
+    100% {visibility: hidden;
+        opacity: 0%;
+        right: -500px;}
+}
+
+.modal-closed {
+    visibility: hidden;
+
+    animation-name: dissappear;
+    animation-duration: 1s;
+}
+
+.modal-open {
+    visibility: visible;
+    animation-name: test;
+    animation-duration: 1s;
 }
 
 #cart-modal {
-    visibility: visible;
     padding-right: 5px;
     position: fixed;
     z-index: 12;
@@ -277,6 +302,13 @@ footer > div > i {
     right: 0px;
     width: 30%;
     bottom: 0px;
+}
+
+#cart-modal-header-btns {
+    align-self: start;
+    justify-self: center;
+    width:fit-content;
+    height: 20px;
 }
 
 #cart-modal-container {
@@ -303,6 +335,7 @@ footer > div > i {
     height: fit-content;
     height: 40px;
     font-size: 16px;
+    visibility: inherit;
 }
 
 #cart-modal-item-card {
@@ -317,12 +350,12 @@ footer > div > i {
 
 .img-box {
     height: inherit;
+    border: 0px solid black;
 }
 
 .img-box > img {
     width: 100px;
     height: 100%;
-    border-radius: 5%;
 }
 
 .details {
@@ -386,6 +419,7 @@ footer > div > i {
     font-size: 20px;
     text-align: center;
     border-left: 0px solid white;
+    border-right: 0px solid;
 }
 
 .adder {
@@ -406,7 +440,6 @@ footer > div > i {
     top: 0;
     border: 0px;
     position: relative;
-    transition: 1s all;
     cursor: pointer;
 }
 
@@ -454,7 +487,6 @@ footer > div > i {
 
 .redify:hover {
     color: red;
-    transition: 1s all;
 }
 
 .redify {
@@ -463,11 +495,11 @@ footer > div > i {
 
 .greenify:hover {
     color: rgb(0, 188, 0);
-    transition: 1s all;
+    
 }
 
 .greenify {
     color: inherit;
-    transition: 1s all;
+    
 }
 

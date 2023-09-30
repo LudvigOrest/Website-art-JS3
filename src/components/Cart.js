@@ -1,13 +1,15 @@
 import React, { Children, useEffect, useState } from 'react';
 import { getArtwork, imageList, fetchData, getImgs } from '../api/index.js';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { cartItemListState } from '../states/globalStates.js';
+import { cartItemListState, totalPriceState, modalState } from '../states/globalStates.js';
+import { ShopItemsObject } from '../objects/objects.js';
 
 export function CartProductCard( {index} ) {
 
     const [itemArr, setItemArr] = useRecoilState(cartItemListState);
+    const [modalVis, setModalVis] = useRecoilState(modalState);
 
-    //Onclick functions for add/remove quantity in the Cart
+    //Onclick functions to add quantity in the Cart
     const add = () => {
         let newArr = itemArr.map((item, i) => {
             if (i === index) {
@@ -17,17 +19,36 @@ export function CartProductCard( {index} ) {
         })
         setItemArr(newArr);
     };
+
+    //Onclick functions to remove quantity in the Cart
     const sub = () => {
         let newArr = itemArr.map((item, i) => {
-            if (i === index && item.amount > 0) {
+            if (i === index && item.amount > 1) {
                 return {...item, amount: (item.amount - 1)};
             }
             else { return {...item} };
         })
-        setItemArr(newArr);
+        //Check if the amount is = 1, if so, then remove the item
+        if (itemArr[index].amount === 1) {
+            removeFromCart(itemArr);
+        } else {
+            setItemArr(newArr);
+        }
     };
 
-    //Fix this >
+    //Onclick function to remove an item
+    const remove = () => {
+        removeFromCart(itemArr);
+    }
+
+    //Onclick function to clear the cart of items
+
+    function removeFromCart(arr) {
+        let updatedArr = [...arr];
+        updatedArr.splice(index, 1)
+        setItemArr(updatedArr);
+    }
+
     if (itemArr.length === 0) {
         return(
             <div>Varukorgen är tom</div>
@@ -42,10 +63,9 @@ export function CartProductCard( {index} ) {
                         <button class="pointer redify subber" onClick={sub}>-</button>
                     </div>
                 );
-            } else {return <>Sorry</>}
+            }
         }
 
-        
         return(
             <div id="cart-modal-item-card" class="flex">
                 <AddButtons />
@@ -69,7 +89,7 @@ export function CartProductCard( {index} ) {
                         </table>
                     </div>
                 </div>
-                <button class="remove redify">
+                <button class="remove" onClick={remove}>
                 <i class="fi fi-rr-trash"></i>
                 </button>
             </div>
@@ -77,36 +97,58 @@ export function CartProductCard( {index} ) {
     }
 }
 
+
 export function Cart() {
 
     const [itemsArr, setItemsArr] = useRecoilState(cartItemListState);
+    const [totalPrice, setTotalPrice] = useRecoilState(totalPriceState);
+    const [modalVis, setModalVis] = useRecoilState(modalState);
     
-    
+    //Set the total sum
+    let totalSum = 0;
+    itemsArr.forEach((obj) => {
+        let objPrice = parseInt(obj.price)
+        objPrice = objPrice * obj.amount;
+        totalSum += objPrice;
+    });
+    totalSum = parseInt(totalSum);
+    console.log(totalSum);
+    setTotalPrice(totalSum);
+
+    const clear = () => {
+        setItemsArr([]);
+    }
+
+    const closeModal = () => {
+        setModalVis("modal-closed")
+    }
 
     return(
-        <container id="cart-modal-container" class="flex">
-            <div id="cart-modal-header" class="flex">
-                <h1>Varukorg</h1>
-                <div id="cart-modal-header-btns" class="flex">
-                    <button>Stäng</button>
-                    <button class="redify">Rensa</button>
+        <container id="modal-all">
+            <container id="cart-modal-container" class="flex">
+                <div id="cart-modal-header" class="flex">
+                    <h1>Varukorg</h1>
+                    <div id="cart-modal-header-btns" class="flex">
+                        <button class="pointer" onClick={ closeModal }>Stäng</button>
+                        <button class="pointer" onClick={ clear }>Rensa</button>
+                    </div>
                 </div>
-            </div>
-            <container id="cart-modal-item-container flex">
-                <div class="cart-modal-item-card">
-                    {
-                        itemsArr.map((item, i) => (
-                            <CartProductCard index={i}/>
-                    ))}
-                </div>
-            </container>
-            <container id="cart-modal-footer flex">
-                <div id="cart-modal-amount">
-                    <h3>Totalt: 4000 kr</h3>
-                </div>
-                <div id="check-out">
-                    <button>Gå till kassan</button>
-                </div>
+                <container id="cart-modal-item-container flex">
+                    <div class="cart-modal-item-card">
+                        {
+                            itemsArr.map((item, i) => (
+                                <CartProductCard index={i}/>
+                        ))}
+                    </div>
+                </container>
+                <container id="cart-modal-footer flex">
+                    <div id="cart-modal-amount">
+                        <h3>Totalt: {totalPrice} kr</h3>
+                    </div>
+                    <div id="check-out">
+                        <button>Gå till kassan</button>
+                    </div>
+                </container>
             </container>
         </container>
     );
