@@ -1,4 +1,5 @@
 import { ShopItemsObject } from '../objects/objects.js';
+import {HomeView} from '../pages/Home';
 const { atom } = require("recoil");
 
 //Debug-object
@@ -17,4 +18,21 @@ export const totalPriceState = atom({
 
 export const modalState = atom({
     key: "modalState",
-    default: "modal-closed"});
+    default: "modal-closed"
+});
+
+export const pageState = atom({
+    key: "pageState",
+    default: <HomeView />,
+});
+
+export const imgArrState = atom({
+    key: "imgArrState",
+    default: []
+});
+
+
+export const totalItemAmountState = atom({
+    key: "totalItemAmountState",
+    default: 0
+});

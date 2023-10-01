@@ -4,6 +4,10 @@ body {
     font-family: 'Public Sans', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .pointer:hover {
     cursor: pointer;
 }
@@ -13,14 +17,17 @@ body {
 }
 
 #header {
+    font-family: 'Bradley Hand', cursive;
     font-style: regular;
-    font-size: 40px;
+    font-size: 25px;
     color: rgb(40, 40, 40);
     text-align: center;
     justify-self: center;
-    border: 3px solid;
-    padding: 10px;
-    width: 250px;
+    align-self: center;
+    margin-left: 2px;
+    margin-right: 2px;
+    width: fit-content;
+    height: fit-content;
     cursor: pointer;
 }
 
@@ -31,41 +38,65 @@ body {
     flex-direction: column;
 }
 
+.navbar-margin {
+    margin-top: 110px;
+}
+
 #navbar {
     position: fixed;
     z-index: 8;
     margin: 0px;
     background-color: rgb(255, 255, 255);
     width: 100%;
+    height: 110px;
     margin-bottom: 3px;
     border-bottom: 2px solid rgb(137, 137, 137);
     display:flex;
-    justify-content: center;
     align-content: center;
+    justify-content: space-between;
 }
 
-.navbar-sub-item {
-    min-width: 420px;
+#navbar-sub-item {
+    min-width: 500px;
     align-self: center;
-}
-
-#header-item {
-    display:flex;
-    justify-content: center;
+    align-content: flex-end;
 }
 
 #links {
+    margin-left: 70px;
+    min-width: fit-content;
+    align-self: center;
     display:flex;
+}
+
+.selected-link {
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+}
+
+#header-item {
+    margin-left: 100px;
+    display:flex;
+    justify-content: end;
+    width: 250px;
+}
+
+#header-item > img {
+    width: 65px;
+    height: 65px;
+    border: 3px solid black;
+    align-self: center;
+    border-radius: 50%;
 }
 
 #navbar-sub {
     width:fit-content;
     display:flex;
-    column-gap: 40px;
+    column-gap: 0px;
 }
 
 .navbar-items {
-    font-size: 20px;
     font-style: italic;
     padding-left: 10px;
     padding-right: 10px;
@@ -75,14 +106,26 @@ body {
     cursor: pointer;
 }
 
+.navbar-links {
+    font-size: 16px;
+    color: grey;
+}
+
+.navbar-selected {
+    color:black;
+    font-weight: bold;
+}
+
 #search-bar {
-    margin-right: 0px;
-    width: 200px;
+    margin-left: 300px;
+    width: 300px;
     height: 20px;
     font-style: normal;
     background-color:rgb(255, 255, 255);
-    border: 2px solid;
     padding: 8px;
+    gap: 5px;
+    font-size: 20px;
+    font-size: 30px;
 }
 
 #search-bar:hover {
@@ -93,30 +136,40 @@ body {
     position: relative;
     align-self: center;
     display: flex;
-    column-gap: 100px;
     background-color: rgba(255, 255, 255, 0.626);
+    height: fit-content;
 }
 
 #banner-container {
-    margin-top: 150px;
-    padding-top: 20px;
+    margin-top: 110px;
+    padding-top: 0px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
     flex-wrap: wrap;
     border-bottom: 2px solid;
-    height: 425px;
     align-content: center;
     column-gap: 100px;
 }
 
 .banner-item {
     display: flex;
+    width: fit-content;
 }
 
 .banner-img {
-    width: 410px;
-    height: 402px;
-    opacity: 0.5;
+    opacity: 0.8;
+    height: 445px;
+    width: 445px;
+    outline: 1px solid black;
+}
+
+.banner-item > h1 {
+    opacity: 1.0;
+    background-color: white;
+    width: 100%;
 }
 
 .centered {
@@ -130,12 +183,16 @@ body {
 
 .banner-p {
     margin: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: fit-content;
     justify-self: center;
-    width: 410px;
+    right:25%;
     top: 50%;
     text-align: center;
     position: absolute;
     font-weight:bold;
+    background-color: white;
 }
 
 #filter-container {
@@ -162,6 +219,7 @@ body {
 
 .shop-thumbnail {
     width: 300px;
+    height: 300px;
     outline: 2px;
     outline-color: rgb(40, 40, 40);
     outline-style: solid;
@@ -197,6 +255,7 @@ body {
     row-gap: 10px;
     padding: 5px;
     text-align: center;
+    height: 110px;
 }
 
 .shop-info > h2 {
@@ -250,12 +309,11 @@ footer > div > i {
     z-index: 10;
     display:flex;
     flex-wrap: wrap;
-    color: red;
     background-color: white;
     display: hidden;
 }
 
-@keyframes test {
+@keyframes opening {
     0% {right: -500px;}
     100% {right: 0px;}
 }
@@ -267,24 +325,21 @@ footer > div > i {
 
 @keyframes dissappear {
     0% {visibility: visible;
-        opacity: 100%;
         right: 0px;}
     99% {visibility: visible;}
     100% {visibility: hidden;
-        opacity: 0%;
         right: -500px;}
 }
 
 .modal-closed {
     visibility: hidden;
-
     animation-name: dissappear;
     animation-duration: 1s;
 }
 
 .modal-open {
     visibility: visible;
-    animation-name: test;
+    animation-name: opening;
     animation-duration: 1s;
 }
 
@@ -448,6 +503,7 @@ footer > div > i {
 }
 
 #shopping-cart {
+    margin-top: 10px;
     padding: 5px;
     font-size: 40px;
     display:visible;
@@ -475,6 +531,19 @@ footer > div > i {
     
 }
 
+.filter-p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.filter-div {
+    cursor:default;
+    background-color:rgb(222, 222, 222);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(137, 137, 137);
+}
+
 .pop-animation:hover {
     scale: 1.05;
     transition: 1s all;
@@ -482,6 +551,16 @@ footer > div > i {
 
 .pop-animation {
     scale: 1.0;
+    transition: 1s all;
+}
+
+.focus-animation {
+    opacity: 0.8;
+    transition: 1s all;
+}
+
+.focus-animation:hover {
+    opacity: inherit;
     transition: 1s all;
 }
 

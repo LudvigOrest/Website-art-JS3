@@ -1,3 +1,8 @@
+import React, { Children, useEffect, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { cartItemListState, imgArrState } from '../states/globalStates.js';
+import { ShopItemsObject } from '../objects/objects.js';
+
 export let artArr;
 
 export let imageList = [];
@@ -15,38 +20,9 @@ export const fetchImgs = async(url, auth) => {
 
 export function getImgs(url, auth) {
   return fetchImgs(url, auth).then((jsonData) => {
-      console.log(jsonData.photos);
       return jsonData.photos;
   })
 };
 
 
 
-
-/**
- * export async function fetchData(arr) {
-  const result = await fetch(url, auth)
-  result.json().then(json => {
-    json.photos.forEach((element) => {arr.push(element)});
-  }).then(() => {console.log(arr)})
-}
- */
-
-
-//Function used to fetch artwork image-sources
-    /**
-     * export async function getArtwork(func, index) {
-    fetch(url, auth)
-     .then(resp => {
-      return resp.json()
-    })
-     .then((images) => {
-      for (let i = 0; i < images.photos.length; i++) {
-          imageList.push(images.photos[i]);  
-     }
-      //func(imageList[index].src.original);
-     })
-     .then(() => {func(imageList[index].src.original)})
-     .catch(() => {console.log("run it back"); getArtwork(func, index)});
-    }
-     */

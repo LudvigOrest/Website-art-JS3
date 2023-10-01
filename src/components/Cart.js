@@ -1,13 +1,14 @@
 import React, { Children, useEffect, useState } from 'react';
 import { getArtwork, imageList, fetchData, getImgs } from '../api/index.js';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { cartItemListState, totalPriceState, modalState } from '../states/globalStates.js';
+import { cartItemListState, totalPriceState, modalState, totalItemAmountState } from '../states/globalStates.js';
 import { ShopItemsObject } from '../objects/objects.js';
 
 export function CartProductCard( {index} ) {
 
     const [itemArr, setItemArr] = useRecoilState(cartItemListState);
     const [modalVis, setModalVis] = useRecoilState(modalState);
+    const [totalItemsAm, setTotalItemsAm] = useRecoilState(totalItemAmountState);
 
     //Onclick functions to add quantity in the Cart
     const add = () => {
@@ -18,6 +19,7 @@ export function CartProductCard( {index} ) {
             else { return {...item} };
         })
         setItemArr(newArr);
+        setTotalItemsAm(totalItemsAm + 1);
     };
 
     //Onclick functions to remove quantity in the Cart
@@ -34,6 +36,7 @@ export function CartProductCard( {index} ) {
         } else {
             setItemArr(newArr);
         }
+        setTotalItemsAm(totalItemsAm - 1);
     };
 
     //Onclick function to remove an item
@@ -103,6 +106,8 @@ export function Cart() {
     const [itemsArr, setItemsArr] = useRecoilState(cartItemListState);
     const [totalPrice, setTotalPrice] = useRecoilState(totalPriceState);
     const [modalVis, setModalVis] = useRecoilState(modalState);
+    const [totalItemsAm, setTotalItemsAm] = useRecoilState(totalItemAmountState);
+
     
     //Set the total sum
     let totalSum = 0;
@@ -117,6 +122,7 @@ export function Cart() {
 
     const clear = () => {
         setItemsArr([]);
+        setTotalItemsAm(0);
     }
 
     const closeModal = () => {
