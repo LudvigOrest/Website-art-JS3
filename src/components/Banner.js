@@ -23,13 +23,11 @@ function BannerItem({ bannerHeader, bannerPar, index }) {
 
 //Export Banner-component below
 function Banner({ amount, bannerHeader, bannerPar }) {
-
     let items = [];
     for (let i = 0; i < amount; i++) {
         items.push(<BannerItem bannerHeader={ bannerHeader[i] } bannerPar={ bannerPar[i] } index={i} img={"imgArr"} />);
     }
-
-    return(
+ return(
         <div id="banner-container">
             {items}
         </div>

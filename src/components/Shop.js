@@ -17,7 +17,6 @@ function ShopItem({ price, index, isPoster }) {
     const url = "https://api.pexels.com/v1/search?query=modern art";
     const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
 
-
     const clicked = () => {
         //params: (id, img, name, amount, size, price, isAddable) This global state is used in Cart.js
         let currentItem = new ShopItemsObject(index, imgArr[index], artTitle, 1, artSize, price, isPoster);
@@ -66,7 +65,6 @@ function ShopItem({ price, index, isPoster }) {
         }
     }
         
-
     useEffect( () =>{
         let newArr = [];
         const asyncFn = async () => {

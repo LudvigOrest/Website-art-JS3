@@ -45,12 +45,12 @@ export function CartProductCard( {index} ) {
     }
 
     //Onclick function to clear the cart of items
-
     function removeFromCart(arr) {
         let updatedArr = [...arr];
-        updatedArr.splice(index, 1)
+        updatedArr.splice(index, 1);
         setItemArr(updatedArr);
-    }
+        setTotalItemsAm(totalItemsAm - (itemArr[index].amount));
+    };
 
     if (itemArr.length === 0) {
         return(
@@ -102,13 +102,11 @@ export function CartProductCard( {index} ) {
 
 
 export function Cart() {
-
     const [itemsArr, setItemsArr] = useRecoilState(cartItemListState);
     const [totalPrice, setTotalPrice] = useRecoilState(totalPriceState);
     const [modalVis, setModalVis] = useRecoilState(modalState);
     const [totalItemsAm, setTotalItemsAm] = useRecoilState(totalItemAmountState);
 
-    
     //Set the total sum
     let totalSum = 0;
     itemsArr.forEach((obj) => {
