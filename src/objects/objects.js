@@ -8,4 +8,4 @@ export function ShopItemsObject(id, img, name, amount, size, price, isAddable) {
     this.size = size;
     this.price = price;
     this.isAddable = isAddable;
-}
+};

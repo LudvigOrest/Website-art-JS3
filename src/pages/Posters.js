@@ -7,7 +7,7 @@ export function PostersView() {
     return(
     <container id="main-container">
         <Filtered pBody="Posters i olika storlekar. Det är möjligt att beställa flera exemplar av samma poster." />
-        <Shop />
+        <Shop filter="posters"/>
         <Footer />
     </container>
     );

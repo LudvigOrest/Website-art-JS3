@@ -31,6 +31,12 @@ a {
     cursor: pointer;
 }
 
+.dodge-header {
+    height: 110px;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+}
+
 #main-container {
     background-color: rgba(152, 152, 152, 0.09);
     height: fit-content;
@@ -114,6 +120,10 @@ a {
 .navbar-selected {
     color:black;
     font-weight: bold;
+}
+
+#banner-container > a:visited {
+    color:black;
 }
 
 #search-bar {
@@ -406,6 +416,16 @@ footer > div > i {
     background-color: rgb(255, 255, 255);
 }
 
+#check-out-item-card {
+    height: 100px;
+    column-gap: 0px;
+    padding-left: 0px;
+    outline: solid 1px rgb(0, 0, 0);
+    margin-bottom: 5px;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
 .img-box {
     height: inherit;
     border: 0px solid black;
@@ -491,11 +511,11 @@ footer > div > i {
 }
 
 .remove {
-    align-self: start;
+    align-self: center;
     justify-self: center;
     width: fit-content;
     height: 100%;
-    top: 0;
+    top: 0px;
     border: 0px;
     position: relative;
     cursor: pointer;

@@ -8,7 +8,6 @@ import Cart from '../components/Cart';
 function Header() {
     const [visible, setVisible] = useRecoilState(modalState);
     const totalItems = useRecoilValue(totalItemAmountState);
-  
     const [homeClass, setHomeClass] = useState("navbar-links navbar-items");
     const [paintingClass, setPaintingClass] = useState("navbar-links navbar-items");
     const [posterClass, setPosterClass] = useState("navbar-links navbar-items");
@@ -20,25 +19,25 @@ function Header() {
   
     function selected(func) {
       switch(func) {
-        case setHomeClass:
+        case "home":
           setHomeClass("navbar-selected navbar-links navbar-items ")
           setPaintingClass("navbar-links navbar-items")
           setPosterClass("navbar-links navbar-items")
           setContactClass("navbar-links navbar-items")
           break;
-        case setPaintingClass:
+        case "paintings":
           setHomeClass("navbar-links navbar-items")
           setPaintingClass("navbar-selected navbar-links navbar-items ")
           setPosterClass("navbar-links navbar-items")
           setContactClass("navbar-links navbar-items")
           break;
-        case setPosterClass:
+        case "posters":
           setHomeClass("navbar-links navbar-items")
           setPaintingClass("navbar-links navbar-items")
           setPosterClass("navbar-selected navbar-links navbar-items ")
           setContactClass("navbar-links navbar-items")
           break;
-        case setContactClass:
+        case "contact":
           setHomeClass("navbar-links navbar-items")
           setPaintingClass("navbar-links navbar-items")
           setPosterClass("navbar-links navbar-items")
@@ -56,9 +55,9 @@ function Header() {
                     <a id="header">konst</a>  
                 </div>
                 <div id="links">
-                  <Link to="/" class={homeClass} onClick={() => {selected(setHomeClass)}}>Hem</Link>
-                  <Link to="/paintings" class={paintingClass} onClick={() => {selected(setPaintingClass)}} >Målningar</Link>
-                  <Link to="/posters" class={posterClass} onClick={() => {selected(setPosterClass)}} >Posters</Link>
+                  <Link to="/" class={homeClass} onClick={() => {selected("home")}}>Hem</Link>
+                  <Link to="/paintings" class={paintingClass} onClick={() => {selected("paintings")}} >Målningar</Link>
+                  <Link to="/posters" class={posterClass} onClick={() => {selected("posters")}} >Posters</Link>
                 </div>
                 <div id="navbar-sub-item">
                     <div class="navbar-items" id="search-bar" style={{cursor: "default"}}>

@@ -1,10 +1,4 @@
-import { ShopItemsObject } from '../objects/objects.js';
-import {HomeView} from '../pages/Home';
 const { atom } = require("recoil");
-
-//Debug-object
-let tester = new ShopItemsObject("id", "imageSource",
- "Name", "Amount", "Size", "Price", "Boolean isPoster");
 
 export const cartItemListState = atom({
     key: "cartItemListState",
@@ -37,4 +31,9 @@ export const totalItemAmountState = atom({
 export const shopObjectArrState = atom({
     key: "shopObjectArrState",
     default: []
+});
+
+export const currentLinkState = atom({
+    key: "currentLinkState",
+    default: ""
 });

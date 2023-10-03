@@ -1,11 +1,9 @@
-import React, { Children, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { imgArrState } from '../states/globalStates.js';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function BannerItem({ bannerHeader, bannerPar, index }) {
     const imgArr = useRecoilValue(imgArrState);
-    const url = "https://api.pexels.com/v1/search?query=modern art";
-    const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
 
     return(
         <div id="banner">
@@ -19,10 +17,10 @@ function BannerItem({ bannerHeader, bannerPar, index }) {
 };
 
 //Export Banner-component below
-function Banner({ amount, bannerHeader, bannerPar }) {
+function Banner({ amount, bannerHeader, bannerPar, routes }) {
     let items = [];
     for (let i = 0; i < amount; i++) {
-        items.push(<BannerItem bannerHeader={ bannerHeader[i] } bannerPar={ bannerPar[i] } index={i} img={"imgArr"} />);
+        items.push(<Link to={routes[i].toString()} class="banner-link"><BannerItem bannerHeader={ bannerHeader[i] } bannerPar={ bannerPar[i] } index={i} img={"imgArr"} /></Link>);
     }
  return(
         <div id="banner-container">

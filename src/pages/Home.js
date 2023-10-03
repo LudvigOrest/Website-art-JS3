@@ -4,12 +4,12 @@ import Shop from '../components/Shop';
 import Footer from '../components/Footer';
 
 export function HomeView() {
-    return(
+    return (
         <container id="main-container">
-            <Banner amount={2} bannerHeader={[["Tavlor i olika storlekar"], ["Prisvärda posters"]]} 
-            bannerPar={[["klicka här för att visa tavlor"], ["klicka här för att visa posters"]]} 
-            wh={[["inherit"], ["inherit"]]} route={[["/paintings"], ["/posters"]]}/>
-            <Shop />
+            <Banner amount={2} bannerHeader={[["Tavlor i olika storlekar"], ["Prisvärda posters"]]}
+                bannerPar={[["klicka här för att visa tavlor"], ["klicka här för att visa posters"]]}
+                wh={[["inherit"], ["inherit"]]} routes={[["/paintings"], ["/posters"]]} />
+            <Shop filter={"home"}/>
             <Footer />
         </container>
     );

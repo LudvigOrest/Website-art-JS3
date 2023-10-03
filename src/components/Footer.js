@@ -11,7 +11,9 @@ function Footer() {
             </div>
             <div id="footer-sub-2" style={{fontWeight: "bold"}}>
                 © Lotten Orest
+                <p>lottenorest@hotmail.com</p>
             </div>
+            
             <div id="footer-sub-3">
                 <p>Unicons by <a href="https://www.flaticon.com/uicons">Flaticon</a></p>
                 <p>page creator: ludvig.orest@live.se</p>

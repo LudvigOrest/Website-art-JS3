@@ -1,7 +1,7 @@
 import React from "react";
 import Shop from '../components/Shop';
 import Footer from '../components/Footer';
-import Filtered from '../components/Filtered'
+import Filtered from '../components/Filtered';
 
 export function PaintingsView() {
     return(
