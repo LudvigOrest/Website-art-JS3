@@ -8,11 +8,13 @@ export let artArr;
 export let imageList = [];
 export let imageList2 = [];
 
-//Pexel-api
-const url = "https://api.pexels.com/v1/search?query=modernart";
-const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
 
-export const fetchImgs = async(url, auth) => {
+
+//Pexel-api
+export const url = "https://api.pexels.com/v1/search?query=modernart&per_page=15";
+export const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
+
+export async function fetchImgs(url, auth) {
   let fetchData = await fetch(url, auth);
   let fetchJson = await fetchData.json();
   return fetchJson;
@@ -23,6 +25,21 @@ export function getImgs(url, auth) {
       return jsonData.photos;
   })
 };
+
+export function fetchAll(url, auth, setState) {
+  fetch(url, auth)
+   .then(resp => {
+    return resp.json()
+  })
+   .then((images) => {
+    imageList = [];
+    for (let i = 0; i < images.photos.length; i++) {
+        imageList.push(images.photos[i]);  
+   }
+    console.log(imageList);
+    setState(imageList);
+   });
+  }
 
 
 

@@ -1,16 +1,13 @@
-import React, { Children, useEffect, useState } from 'react';
-import { getArtwork, imageList, fetchData, getImgs } from '../api/index.js';
+import React, { } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { cartItemListState, totalPriceState, modalState, totalItemAmountState } from '../states/globalStates.js';
-import { ShopItemsObject } from '../objects/objects.js';
 
 export function CartProductCard( {index} ) {
-
     const [itemArr, setItemArr] = useRecoilState(cartItemListState);
     const [modalVis, setModalVis] = useRecoilState(modalState);
     const [totalItemsAm, setTotalItemsAm] = useRecoilState(totalItemAmountState);
 
-    //Onclick functions to add quantity in the Cart
+    //Onclick handler to add quantity in the Cart
     const add = () => {
         let newArr = itemArr.map((item, i) => {
             if (i === index) {
@@ -22,7 +19,7 @@ export function CartProductCard( {index} ) {
         setTotalItemsAm(totalItemsAm + 1);
     };
 
-    //Onclick functions to remove quantity in the Cart
+    //Onclick handler to remove quantity in the Cart
     const sub = () => {
         let newArr = itemArr.map((item, i) => {
             if (i === index && item.amount > 1) {
@@ -39,12 +36,12 @@ export function CartProductCard( {index} ) {
         setTotalItemsAm(totalItemsAm - 1);
     };
 
-    //Onclick function to remove an item
+    //Onclick handler to remove an item
     const remove = () => {
         removeFromCart(itemArr);
-    }
+    };
 
-    //Onclick function to clear the cart of items
+    //Onclick handler to clear the cart of items
     function removeFromCart(arr) {
         let updatedArr = [...arr];
         updatedArr.splice(index, 1);
@@ -67,7 +64,7 @@ export function CartProductCard( {index} ) {
                     </div>
                 );
             }
-        }
+        };
 
         return(
             <div id="cart-modal-item-card" class="flex">
@@ -97,9 +94,8 @@ export function CartProductCard( {index} ) {
                 </button>
             </div>
         );
-    }
-}
-
+    };
+};
 
 export function Cart() {
     const [itemsArr, setItemsArr] = useRecoilState(cartItemListState);
@@ -121,11 +117,11 @@ export function Cart() {
     const clear = () => {
         setItemsArr([]);
         setTotalItemsAm(0);
-    }
+    };
 
     const closeModal = () => {
         setModalVis("modal-closed")
-    }
+    };
 
     return(
         <container id="modal-all">
@@ -156,6 +152,6 @@ export function Cart() {
             </container>
         </container>
     );
-}
+};
 
 export default Cart;

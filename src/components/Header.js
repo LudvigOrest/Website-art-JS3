@@ -6,7 +6,6 @@ import logo from '../api/images/furn/logo.png';
 import Cart from '../components/Cart';
 
 function Header() {
-
     const [visible, setVisible] = useRecoilState(modalState);
     const totalItems = useRecoilValue(totalItemAmountState);
   
@@ -46,7 +45,7 @@ function Header() {
           setContactClass("navbar-selected navbar-links navbar-items ")
           break;
       }
-    }
+    };
   
     return (
         <container id="navbar">

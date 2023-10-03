@@ -8,9 +8,9 @@ export function HomeView() {
         <container id="main-container">
             <Banner amount={2} bannerHeader={[["Tavlor i olika storlekar"], ["Prisvärda posters"]]} 
             bannerPar={[["klicka här för att visa tavlor"], ["klicka här för att visa posters"]]} 
-            wh={[["inherit"], ["inherit"]]}/>
+            wh={[["inherit"], ["inherit"]]} route={[["/paintings"], ["/posters"]]}/>
             <Shop />
             <Footer />
         </container>
     );
-}
+};

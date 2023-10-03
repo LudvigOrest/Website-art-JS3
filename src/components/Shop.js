@@ -7,7 +7,6 @@ import { ShopItemsObject } from '../objects/objects.js';
 
 //Shop item-card
 function ShopItem({ price, index, isPoster }) {
-
     const [cartItems, setCartItems] = useRecoilState(cartItemListState);
     const [imgArr, setImgArr] = useRecoilState(imgArrState);
     const [totalItemAm, setTotalItemAm] = useRecoilState(totalItemAmountState);
@@ -17,6 +16,7 @@ function ShopItem({ price, index, isPoster }) {
     const url = "https://api.pexels.com/v1/search?query=modern art";
     const auth = { headers: {Authorization: "xxzPD6eb7sa0eA6uVDd0hhPcjU66MArp6vnVNZRrD1l37UnZ2bz2VNSQ"}};
 
+    //Onclick handler
     const clicked = () => {
         //params: (id, img, name, amount, size, price, isAddable) This global state is used in Cart.js
         let currentItem = new ShopItemsObject(index, imgArr[index], artTitle, 1, artSize, price, isPoster);
@@ -63,7 +63,7 @@ function ShopItem({ price, index, isPoster }) {
                 setTotalItemAm(totalItemAm + 1); 
             };
         }
-    }
+    };
         
     useEffect( () =>{
         let newArr = [];
@@ -142,7 +142,7 @@ function Shop({ filter }) {
                 <ShopItem size="60x60 cm" price="6000" index="14" isPoster={false} />
             </container>
             );
-        }
+        };
     };
 
 export default Shop;

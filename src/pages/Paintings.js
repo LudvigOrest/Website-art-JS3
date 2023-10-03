@@ -1,7 +1,6 @@
 import React from "react";
 import Shop from '../components/Shop';
 import Footer from '../components/Footer';
-import Banner from '../components/Banner';
 import Filtered from '../components/Filtered'
 
 export function PaintingsView() {

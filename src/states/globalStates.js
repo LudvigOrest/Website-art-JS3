@@ -3,7 +3,8 @@ import {HomeView} from '../pages/Home';
 const { atom } = require("recoil");
 
 //Debug-object
-let tester = new ShopItemsObject(343, "https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg", "Debug", 1, "40x30", "300", false)
+let tester = new ShopItemsObject("id", "imageSource",
+ "Name", "Amount", "Size", "Price", "Boolean isPoster");
 
 export const cartItemListState = atom({
     key: "cartItemListState",
@@ -20,7 +21,7 @@ export const modalState = atom({
     default: "modal-closed"
 });
 
-
+//Array with image urls
 export const imgArrState = atom({
     key: "imgArrState",
     default: []
@@ -30,4 +31,10 @@ export const imgArrState = atom({
 export const totalItemAmountState = atom({
     key: "totalItemAmountState",
     default: 0
+});
+
+//Use this one for all shop-items instead, this way only need one arr that fetches in App.js
+export const shopObjectArrState = atom({
+    key: "shopObjectArrState",
+    default: []
 });
